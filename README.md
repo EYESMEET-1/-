@@ -2,6 +2,12 @@
 
 面向游戏音频功能、混音、空间定位、性能、兼容性和故障注入的可交互测试作品集。
 
+## 在线打开
+
+- [进入互动测试实验场](https://eyesmeet-1.github.io/-/)
+- [查看测试作品集 PDF](https://eyesmeet-1.github.io/-/portfolio/%E5%BC%A0%E6%88%90-%E9%9F%B3%E9%A2%91%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88-%E4%BD%9C%E5%93%81%E9%9B%86.pdf)
+- [GitHub 仓库中的 PDF](https://github.com/EYESMEET-1/-/blob/main/portfolio/%E5%BC%A0%E6%88%90-%E9%9F%B3%E9%A2%91%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88-%E4%BD%9C%E5%93%81%E9%9B%86.pdf)
+
 ## 在线内容
 
 - 互动测试实验场：GitHub Pages 首页
