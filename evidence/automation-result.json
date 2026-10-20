@@ -1,0 +1,212 @@
+{
+  "startedAt": "2026-10-20T10:13:31.597Z",
+  "viewport": {
+    "desktop": {
+      "width": 1440,
+      "height": 1024
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "checks": [
+    {
+      "name": "page loads",
+      "passed": true,
+      "detail": "status=200"
+    },
+    {
+      "name": "page title",
+      "passed": true,
+      "detail": "战斗音频测试实验场"
+    },
+    {
+      "name": "desktop has no horizontal overflow",
+      "passed": true,
+      "detail": "{\"documentWidth\":1440,\"viewportWidth\":1440,\"shellWidth\":1440,\"workspaceWidth\":1384}"
+    },
+    {
+      "name": "canvas is nonblank",
+      "passed": true,
+      "detail": "{\"width\":892,\"height\":501,\"nonBlack\":8100,\"variation\":262,\"checksum\":229764644}"
+    },
+    {
+      "name": "canvas has visual variation",
+      "passed": true,
+      "detail": "{\"width\":892,\"height\":501,\"nonBlack\":8100,\"variation\":262,\"checksum\":229764644}"
+    },
+    {
+      "name": "audio session starts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "attack emits swing event",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "attack emits impact event",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "voice starts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "voice ducks music",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "music restores after voice",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "audio context is running",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "active voice count is tracked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "mixer updates master gain",
+      "passed": true,
+      "detail": "{\"master\":0.55,\"music\":0.42,\"sfx\":0.75,\"voice\":0.68}"
+    },
+    {
+      "name": "mixer value is visible",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "latency fault is observable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "duplicate fault produces extra hit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "pan inversion changes applied pan",
+      "passed": true,
+      "detail": "{\"id\":21,\"t\":3311.4,\"relativeT\":2534.7,\"name\":\"enemy_proximity\",\"bus\":\"SFX\",\"level\":0.026,\"pan\":0.8,\"status\":\"info\",\"delay\":0,\"panApplied\":-0.8}"
+    },
+    {
+      "name": "distance attenuation reduces gain",
+      "passed": true,
+      "detail": "{\"id\":23,\"t\":3405.7,\"relativeT\":2629,\"name\":\"enemy_proximity\",\"bus\":\"SFX\",\"level\":0.0217,\"pan\":0.7472,\"status\":\"info\",\"delay\":0,\"panApplied\":-0.7471885160048568}"
+    },
+    {
+      "name": "combat BGM state changes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "BGM gap fault is observable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "duck-stuck fault blocks music restore",
+      "passed": true,
+      "detail": "1->1"
+    },
+    {
+      "name": "mute state is recorded",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "voice leak fault is observable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "unmute restores mixer state",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "enemy death emits audio event",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "pause state is recorded",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "resume state is recorded",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "canvas remains rendered after interaction",
+      "passed": true,
+      "detail": "{\"width\":892,\"height\":501,\"nonBlack\":8100,\"variation\":616,\"checksum\":273208398}"
+    },
+    {
+      "name": "canvas animation changes between frames",
+      "passed": true,
+      "detail": "229764644->273208398"
+    },
+    {
+      "name": "event trace saved",
+      "passed": true,
+      "detail": "events=42"
+    },
+    {
+      "name": "event log renders rows",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no browser console errors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile has no horizontal overflow",
+      "passed": true,
+      "detail": "{\"documentWidth\":390,\"viewportWidth\":390,\"stageWidth\":373.328125,\"actionWidth\":362,\"overlapping\":false}"
+    },
+    {
+      "name": "mobile stage fills available width",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile controls do not overlap",
+      "passed": true,
+      "detail": "{\"documentWidth\":390,\"viewportWidth\":390,\"stageWidth\":373.328125,\"actionWidth\":362,\"overlapping\":false}"
+    },
+    {
+      "name": "reset stops session",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reset clears fault injection",
+      "passed": true,
+      "detail": "{\"latency\":false,\"duplicate\":false,\"bgmGap\":false,\"duckStuck\":false,\"panInvert\":false,\"voiceLeak\":false}"
+    }
+  ],
+  "screenshots": [
+    "D:\\27校招\\音频测试作品集\\evidence\\desktop-dashboard.png",
+    "D:\\27校招\\音频测试作品集\\evidence\\fault-panel.png",
+    "D:\\27校招\\音频测试作品集\\evidence\\mobile-dashboard.png"
+  ],
+  "finishedAt": "2026-10-20T10:13:38.687Z",
+  "passed": true
+}

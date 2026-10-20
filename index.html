@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="面向游戏音频功能、混音、空间定位、兼容性与性能风险的可交互测试实验场。"
+    />
+    <title>战斗音频测试实验场</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand-block">
+          <div class="brand-mark" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div>
+            <p class="eyebrow">AUDIO QA LAB / BUILD 01</p>
+            <h1>战斗音频测试实验场</h1>
+          </div>
+        </div>
+        <div class="session-actions">
+          <div class="runtime-status" id="runtimeStatus" data-state="idle">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span id="runtimeStatusText">等待启动</span>
+          </div>
+          <button class="button button-primary" id="startBtn" type="button">
+            启动测试场
+          </button>
+          <button class="button button-quiet" id="resetBtn" type="button">
+            重置
+          </button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="arena-column" aria-labelledby="arenaTitle">
+          <div class="section-heading">
+            <div>
+              <p class="section-index">01 / TEST TARGET</p>
+              <h2 id="arenaTitle">战斗场景</h2>
+            </div>
+            <div class="scene-state">
+              <span id="sceneStateLabel">探索状态</span>
+              <button class="text-action" id="combatToggleBtn" type="button">
+                进入战斗
+              </button>
+            </div>
+          </div>
+
+          <div class="stage-frame">
+            <canvas
+              id="arenaCanvas"
+              width="1280"
+              height="720"
+              role="img"
+              aria-label="可操作的战斗音频测试场景"
+            ></canvas>
+            <div class="stage-overlay stage-overlay-top">
+              <span id="sceneMode">EXPLORE</span>
+              <span id="sceneClock">00:00.000</span>
+            </div>
+            <div class="stage-overlay stage-overlay-bottom">
+              <span class="signal-legend">
+                <i class="signal-dot signal-dot-music" aria-hidden="true"></i>
+                MUSIC
+              </span>
+              <span class="signal-legend">
+                <i class="signal-dot signal-dot-sfx" aria-hidden="true"></i>
+                SFX
+              </span>
+              <span class="signal-legend">
+                <i class="signal-dot signal-dot-voice" aria-hidden="true"></i>
+                VOICE
+              </span>
+              <span class="stage-coordinate" id="stageCoordinate">0.00 / 0.00</span>
+            </div>
+          </div>
+
+          <div class="action-strip" aria-label="场景操作">
+            <button class="action-button" data-action="move-left" type="button">
+              <span class="action-key">A</span>
+              <span>左移</span>
+            </button>
+            <button class="action-button" data-action="move-right" type="button">
+              <span class="action-key">D</span>
+              <span>右移</span>
+            </button>
+            <button class="action-button action-button-main" data-action="attack" type="button">
+              <span class="action-key">J</span>
+              <span>普攻</span>
+            </button>
+            <button class="action-button" data-action="skill" type="button">
+              <span class="action-key">K</span>
+              <span>技能</span>
+            </button>
+            <button class="action-button" data-action="voice" type="button">
+              <span class="action-key">V</span>
+              <span>战斗语音</span>
+            </button>
+          </div>
+
+          <div class="test-strip">
+            <div class="test-stat">
+              <span>当前BGM</span>
+              <strong id="bgmState">EXPLORE</strong>
+            </div>
+            <div class="test-stat">
+              <span>活跃声部</span>
+              <strong id="activeVoices">0</strong>
+            </div>
+            <div class="test-stat">
+              <span>峰值电平</span>
+              <strong id="peakLevel">-INF dB</strong>
+            </div>
+            <div class="test-stat">
+              <span>事件计数</span>
+              <strong id="eventCount">0</strong>
+            </div>
+          </div>
+        </section>
+
+        <aside class="control-column" aria-label="音频测试控制台">
+          <section class="control-section">
+            <div class="section-heading compact">
+              <div>
+                <p class="section-index">02 / AUDIO CONTROL</p>
+                <h2>音频控制</h2>
+              </div>
+              <button class="text-action" id="muteBtn" type="button" aria-pressed="false">
+                静音
+              </button>
+            </div>
+            <div class="mixer">
+              <label class="range-row" for="masterVolume">
+                <span>Master</span>
+                <input id="masterVolume" class="range" type="range" min="0" max="100" value="78" />
+                <output id="masterVolumeValue">78%</output>
+              </label>
+              <label class="range-row" for="musicVolume">
+                <span>Music</span>
+                <input id="musicVolume" class="range" type="range" min="0" max="100" value="42" />
+                <output id="musicVolumeValue">42%</output>
+              </label>
+              <label class="range-row" for="sfxVolume">
+                <span>SFX</span>
+                <input id="sfxVolume" class="range" type="range" min="0" max="100" value="75" />
+                <output id="sfxVolumeValue">75%</output>
+              </label>
+              <label class="range-row" for="voiceVolume">
+                <span>Voice</span>
+                <input id="voiceVolume" class="range" type="range" min="0" max="100" value="68" />
+                <output id="voiceVolumeValue">68%</output>
+              </label>
+            </div>
+          </section>
+
+          <section class="control-section">
+            <div class="section-heading compact">
+              <div>
+                <p class="section-index">03 / FAULT INJECTION</p>
+                <h2>故障注入</h2>
+              </div>
+              <span class="section-note" id="faultCount">0 ACTIVE</span>
+            </div>
+            <div class="fault-grid">
+              <label class="fault-item">
+                <input type="checkbox" data-fault="latency" />
+                <span class="fault-indicator" aria-hidden="true"></span>
+                <span>
+                  <strong>打击延迟</strong>
+                  <small>延迟 220ms</small>
+                </span>
+              </label>
+              <label class="fault-item">
+                <input type="checkbox" data-fault="duplicate" />
+                <span class="fault-indicator" aria-hidden="true"></span>
+                <span>
+                  <strong>音效叠加</strong>
+                  <small>重复触发</small>
+                </span>
+              </label>
+              <label class="fault-item">
+                <input type="checkbox" data-fault="bgmGap" />
+                <span class="fault-indicator" aria-hidden="true"></span>
+                <span>
+                  <strong>BGM断点</strong>
+                  <small>切换静音</small>
+                </span>
+              </label>
+              <label class="fault-item">
+                <input type="checkbox" data-fault="duckStuck" />
+                <span class="fault-indicator" aria-hidden="true"></span>
+                <span>
+                  <strong>闪避失误</strong>
+                  <small>音量不恢复</small>
+                </span>
+              </label>
+              <label class="fault-item">
+                <input type="checkbox" data-fault="panInvert" />
+                <span class="fault-indicator" aria-hidden="true"></span>
+                <span>
+                  <strong>声像反转</strong>
+                  <small>左右互换</small>
+                </span>
+              </label>
+              <label class="fault-item">
+                <input type="checkbox" data-fault="voiceLeak" />
+                <span class="fault-indicator" aria-hidden="true"></span>
+                <span>
+                  <strong>语音泄漏</strong>
+                  <small>静音仍输出</small>
+                </span>
+              </label>
+            </div>
+          </section>
+
+          <section class="control-section log-section">
+            <div class="section-heading compact">
+              <div>
+                <p class="section-index">04 / EVENT TRACE</p>
+                <h2>事件日志</h2>
+              </div>
+              <div class="log-actions">
+                <button class="text-action" id="exportBtn" type="button">导出</button>
+                <button class="text-action" id="clearLogBtn" type="button">清空</button>
+              </div>
+            </div>
+            <div class="event-log" id="eventLog" role="log" aria-live="polite"></div>
+          </section>
+        </aside>
+      </main>
+
+      <footer class="app-footer">
+        <span>FUNCTIONAL / MIX / SPATIAL / PERFORMANCE / COMPATIBILITY</span>
+        <span id="buildStamp">LOCAL TESTBED 01</span>
+      </footer>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
